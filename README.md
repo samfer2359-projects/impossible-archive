@@ -1,16 +1,47 @@
-# React + Vite
+# The Impossible Archive
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+The Impossible Archive is a fictional sci-fi React application that acts as a classified database of strange cosmic events, anomalies, alien signals, and unknown technologies.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Tech Stack
 
-## React Compiler
+- React (Vite)
+- JavaScript
+- React Router DOM
+- CSS
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+##  What This Project Does
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- Displays a list of fictional cosmic anomalies
+- Lets users search through archive entries
+- Opens detailed pages for each anomaly
+- Uses reusable React components
+- Uses routing for navigation between pages
+
+---
+
+## Concept
+
+Each entry in the archive represents a mysterious discovery from deep space, including:
+
+- Unknown signals
+- Broken spacecraft
+- Strange planets
+- Artificial intelligence systems
+- Impossible scientific phenomena
+
+The goal is to make the archive feel like a real classified system.
+
+---
+
+## Live Demo
+ **[https://your-live-link-here.vercel.app](https://your-live-link-here.vercel.app)**
+
+---
+
+## Status
+
+This project is still in development.
