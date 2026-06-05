@@ -52,6 +52,24 @@ function ArchiveDetailPage() {
       <p>{archive.notes}</p>
     </div>
 
+    <button onClick={() => {
+  window.open(
+    `https://www.google.com/search?q=${encodeURIComponent(archive.research.google)}`,
+    "_blank"
+  );
+}}>
+  🔍 Google Research
+</button>
+
+<button onClick={() => {
+  window.open(
+    `https://www.youtube.com/results?search_query=${encodeURIComponent(archive.research.youtube)}`,
+    "_blank"
+  );
+}}>
+  ▶ YouTube Research
+</button>
+
   </div>
 );
 }
