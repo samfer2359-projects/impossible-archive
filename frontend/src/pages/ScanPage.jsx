@@ -1,12 +1,30 @@
 import { useState } from "react";
 import CinematicPlayer from "../components/CinematicPlayer";
 
+
+
+const FALLBACK_MESSAGES = [
+  "⚠️ SCIENTISTS REPORT: curiosity exceeded allowed limits.",
+  "🧪 ERROR: experiment collapsed under its own ambition.",
+  "👨‍💻 DEV NOTE: it worked on my machine… in another timeline.",
+  "🔬 ARCHIVE FAILURE: subject observed itself too intensely.",
+  "⚠️ SYSTEM NOTICE: too much curiosity detected. cooling universe...",
+  "🧠 API DOWN: reality engine is currently debugging existence.",
+  "📡 SIGNAL LOST: the archive refuses to be studied today.",
+  "👨‍🔬 BREAKTHROUGH FAILED: genius level exceeded server capacity.",
+];
+
+function getFallbackMessage() {
+  return FALLBACK_MESSAGES[
+    Math.floor(Math.random() * FALLBACK_MESSAGES.length)
+  ];
+}
+
 function ScanPage() {
   const [object, setObject] = useState("");
   const [story, setStory] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  
   async function handleRecovery() {
     if (!object.trim()) return;
 
@@ -22,10 +40,15 @@ function ScanPage() {
         body: JSON.stringify({ object }),
       });
 
+      if (!res.ok) {
+        throw new Error("API_FAILED");
+      }
+
       const data = await res.json();
       setStory(data);
     } catch (err) {
       console.error("Error generating story:", err);
+      alert(getFallbackMessage());
     }
 
     setLoading(false);
@@ -37,9 +60,7 @@ function ScanPage() {
   }
 
   if (story) {
-    return (
-      <CinematicPlayer story={story} onEnd={handleReset} />
-    );
+    return <CinematicPlayer story={story} onEnd={handleReset} />;
   }
 
   return (
