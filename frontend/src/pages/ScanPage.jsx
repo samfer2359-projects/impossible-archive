@@ -14,7 +14,7 @@ function ScanPage() {
 
     try {
       const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
-      const res = await fetch(BACKEND_URL, {
+      const res = await fetch(`${BACKEND_URL}/generate-story`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
