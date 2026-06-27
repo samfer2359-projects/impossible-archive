@@ -13,7 +13,8 @@ function ScanPage() {
     setLoading(true);
 
     try {
-      const res = await fetch("http://localhost:5000/generate-story", {
+      const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+      const res = await fetch(BACKEND_URL, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
