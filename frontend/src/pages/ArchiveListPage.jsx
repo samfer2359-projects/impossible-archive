@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
 import ArchiveCard from "../components/ArchiveCard";
 import { archives } from "../data/archive.js";
+import { useNavigate } from "react-router-dom";
 
 function ArchiveListPage() {
   const [search, setSearch] = useState("");
+  const navigate = useNavigate();
 
   const filtered = archives.filter((item) =>
     item.title.toLowerCase().includes(search.toLowerCase())
@@ -29,20 +31,28 @@ function ArchiveListPage() {
         onChange={(e) => setSearch(e.target.value)}
       />
 
+      {/* SPECIAL CARD */}
+        <div
+          className="archive-card recover-card"
+          onClick={() => navigate("/scan")}
+        >
+          <h2>+ Recover New Artifact</h2>
+          <p>Generate a new classified archive entry</p>
+          <p className="recover-action">→ Begin Recovery</p>
+        </div> <br />
+
       <div className="archive-grid">
-        {filtered.length === 0 ? (
-          <p>No anomalies found in archive</p>
-        ) : (
-          filtered.map((item) => (
-            <ArchiveCard
-              key={item.id}
-              id={item.id}
-              title={item.title}
-              classification={item.classification}
-              threatLevel={item.threatLevel}
-            />
-          ))
-        )}
+        {filtered.map((item) => (
+          <ArchiveCard
+            key={item.id}
+            id={item.id}
+            title={item.title}
+            classification={item.classification}
+            threatLevel={item.threatLevel}
+          />
+        ))}
+
+        
       </div>
     </div>
   );

@@ -5,9 +5,7 @@ function HomePage() {
 
   return (
     <div className="home-container">
-
       <div className="home-panel">
-
         <h1>The Impossible Archive</h1>
 
         <p>CLASSIFIED COSMIC DATABASE INTERFACE</p>
@@ -15,8 +13,8 @@ function HomePage() {
         <hr />
 
         <p>
-          The Impossible Archive is a recovered database containing records
-          of anomalous cosmic phenomena, impossible technologies, abandoned
+          The Impossible Archive is a recovered database containing records of
+          anomalous cosmic phenomena, impossible technologies, abandoned
           megastructures, rogue artificial intelligences, lost civilizations,
           unexplained transmissions, and discoveries that appear to violate
           known laws of reality.
@@ -41,24 +39,14 @@ function HomePage() {
 
         <h3>WARNING</h3>
 
-        <p>
-          Multiple records contain contradictory information.
-        </p>
-
-        <p>
-          Several entries describe events that should be impossible.
-        </p>
-
-        <p>
-          Archive authenticity remains unresolved.
-        </p>
+        <p>Multiple records contain contradictory information.</p>
+        <p>Several entries describe events that should be impossible.</p>
+        <p>Archive authenticity remains unresolved.</p>
 
         <button onClick={() => navigate("/archive")}>
           ENTER ARCHIVE
         </button>
-
       </div>
-
     </div>
   );
 }

@@ -1,4 +1,9 @@
-import { BrowserRouter, Routes, Route, useLocation, useNavigate } from "react-router-dom";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  useLocation,
+} from "react-router-dom";
 import { useEffect } from "react";
 import ReactGA from "react-ga4";
 
@@ -23,43 +28,63 @@ function AnalyticsTracker() {
   return null;
 }
 
-function FloatingScanButton() {
-  const navigate = useNavigate();
+function AppLayout({ children }) {
+  const location = useLocation();
+
+  // Hide bot only on home page
+  const showBot = location.pathname !== "/";
 
   return (
-    <button
-      onClick={() => navigate("/scan")}
-      style={{
-        position: "fixed",
-        bottom: "20px",
-        left: "20px",
-        zIndex: 1000,
-        padding: "10px 14px",
-        background: "#00ffcc",
-        border: "none",
-        cursor: "pointer",
-        fontWeight: "bold",
-      }}
-    >
-      SCAN
-    </button>
+    <>
+      <VideoBackground />
+      <AnalyticsTracker />
+
+      {showBot && <BotWidget />}
+
+      <div className="app-container">{children}</div>
+    </>
   );
 }
 
 function App() {
   return (
     <BrowserRouter>
-      <AnalyticsTracker />
-
-      <VideoBackground />
-      <BotWidget />
-      <FloatingScanButton />
-
       <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/archive" element={<ArchiveListPage />} />
-        <Route path="/archive/:id" element={<ArchiveDetailPage />} />
-        <Route path="/scan" element={<ScanPage />} />
+        <Route
+          path="/"
+          element={
+            <AppLayout>
+              <HomePage />
+            </AppLayout>
+          }
+        />
+
+        <Route
+          path="/archive"
+          element={
+            <AppLayout>
+              <ArchiveListPage />
+            </AppLayout>
+          }
+        />
+
+        <Route
+          path="/archive/:id"
+          element={
+            <AppLayout>
+              <ArchiveDetailPage />
+            </AppLayout>
+          }
+        />
+
+        <Route
+          path="/scan"
+          element={
+            <AppLayout>
+              <ScanPage />
+            </AppLayout>
+          }
+        />
       </Routes>
     </BrowserRouter>
   );
