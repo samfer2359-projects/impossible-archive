@@ -31,7 +31,7 @@ function AnalyticsTracker() {
 function AppLayout({ children }) {
   const location = useLocation();
 
-  // Hide bot only on home page
+  
   const showBot = location.pathname !== "/";
 
   return (
